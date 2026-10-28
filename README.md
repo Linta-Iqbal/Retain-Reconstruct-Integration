@@ -24,6 +24,7 @@ features and updates the fusion network and sample gates using task loss.
 
 ## Baselines
 - `static_fusion`: fixed modality fusion weights.
+- `learned_reweighting`: update modality fusion weights using task loss.
 - `oracle_fusion_weights`: searches modality fusion weights using test labels.
 
 The oracle method is upper-bound diagnostic. 
