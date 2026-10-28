@@ -1,0 +1,27 @@
+dataset:
+  name: mvsa
+  modalities: [image, text]
+  num_classes: 3
+
+data:
+  train_csv: ${MVSA_ROOT}/train.csv
+  val_csv: ${MVSA_ROOT}/val.csv
+  test_csv: ${MVSA_ROOT}/test.csv
+  image_root: ${MVSA_ROOT}/data
+  feature_bundle: ${MVSA_ROOT}/features.pt
+
+# Compact widths preserve the complete 5.* architecture while matching the
+# 1.* trainable-parameter budget: 1,036,553 parameters for 512-D features.
+model:
+  fusion_hidden_dim: 86
+  reconstructor_hidden_dim: 136
+  gate_hidden_dim: 108
+
+corruption:
+  image: gaussian
+  text: word_mask
+
+output:
+  checkpoint_dir: checkpoints/mvsa
+  results_dir: results/mvsa
+

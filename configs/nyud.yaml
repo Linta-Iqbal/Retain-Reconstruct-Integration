@@ -1,0 +1,30 @@
+dataset:
+  name: nyud
+  modalities: [rgb, depth]
+  num_classes: 10
+
+data:
+  dataset_root: ${NYUD_ROOT}
+  labels_csv: ${NYUD_ROOT}/clean_labels.csv
+  rgb_root: ${NYUD_ROOT}/rgb
+  depth_root: ${NYUD_ROOT}/depth_png
+  feature_bundle: ${NYUD_ROOT}/features.pt
+  test_size: 0.2
+  feature_batch_size: 256
+  depth_value_max: null
+
+# Compact widths preserve the complete 5.* architecture while matching the
+# 1.* trainable-parameter budget: 1,039,262 parameters for 512-D features.
+model:
+  fusion_hidden_dim: 75
+  reconstructor_hidden_dim: 170
+  gate_hidden_dim: 84
+
+corruption:
+  rgb: gaussian
+  depth: gaussian
+
+output:
+  checkpoint_dir: checkpoints/nyud
+  results_dir: results/nyud
+

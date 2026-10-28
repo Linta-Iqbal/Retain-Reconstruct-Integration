@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Generated artifacts. Keep directory placeholders and metadata only.
+checkpoints/**/*.pt
+results/**/*.csv
+results/**/*.json
+data/processed/
+

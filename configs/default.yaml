@@ -1,0 +1,48 @@
+seed: 42
+device: auto
+
+task:
+  type: classification
+  primary_metric: accuracy
+
+data:
+  feature_bundle: null
+  feature_batch_size: 64
+  train_batch_size: 16
+  num_workers: 0
+
+model:
+  fusion_hidden_dim: 128
+  reconstructor_hidden_dim: 256
+  gate_hidden_dim: 128
+  dropout: 0.2
+  normalize_representations: true
+  encoder:
+    mode: clip
+    model_id: openai/clip-vit-base-patch32
+
+training:
+  epochs: 200
+  reconstruction_lr: 0.001
+  classifier_lr: 0.001
+  fixed_reconstruction_weights: true
+  sample_loss_weight: 1.0
+  distribution_loss_weight: 1.0
+  weight_decay: 0.0
+  distribution_epsilon: 1.0e-6
+
+corruption:
+  levels: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  evaluation_seed: 42000
+
+baselines:
+  learned_retention_epochs: 100
+  learned_retention_lr: 0.01
+  oracle_retention_steps: 101
+  oracle_fusion_max_weight: 2.0
+  oracle_fusion_steps: 41
+
+output:
+  checkpoint_dir: checkpoints
+  results_dir: results
+

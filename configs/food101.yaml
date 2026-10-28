@@ -1,0 +1,27 @@
+dataset:
+  name: food101
+  modalities: [image, text]
+  num_classes: 101
+
+data:
+  train_csv: ${FOOD101_ROOT}/train.csv
+  test_csv: ${FOOD101_ROOT}/test.csv
+  train_image_root: ${FOOD101_ROOT}/images/train
+  test_image_root: ${FOOD101_ROOT}/images/test
+  feature_bundle: ${FOOD101_ROOT}/features.pt
+
+# Compact widths preserve the complete 5.* architecture while matching the
+# 1.* trainable-parameter budget: 1,074,479 parameters for 512-D features.
+model:
+  fusion_hidden_dim: 92
+  reconstructor_hidden_dim: 136
+  gate_hidden_dim: 112
+
+corruption:
+  image: gaussian
+  text: word_mask
+
+output:
+  checkpoint_dir: checkpoints/food101
+  results_dir: results/food101
+
